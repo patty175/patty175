@@ -41,8 +41,8 @@ function showProductsList(array){
     for(let i = 0; i < productsList.length; i++){
         let category = productsList[i];
 
-        if (((minCount == undefined) || (minCount != undefined && parseInt(category.soldCount) >= minCount)) &&
-            ((maxCount == undefined) || (maxCount != undefined && parseInt(category.soldCount) <= maxCount))){
+        if (((minCount == undefined) || (minCount != undefined && parseInt(category.cost) >= minCount)) &&
+            ((maxCount == undefined) || (maxCount != undefined && parseInt(category.cost) <= maxCount))){
 
         htmlContentToAppend += '<div class="list-group-item list-group-item-action">\
         <div class="row"  onclick="showSpinner()">\
@@ -104,6 +104,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         minCount = document.getElementById("rangeFilterCountMin").value;
         maxCount = document.getElementById("rangeFilterCountMax").value;
 
+        console.log("hola")
         if ((minCount != undefined) && (minCount != "") && (parseInt(minCount)) >= 0){
             minCount = parseInt(minCount);
         }
