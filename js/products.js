@@ -46,8 +46,8 @@ function showProductsList(array){
         let productDescription = category.description.toLowerCase();   
 
         if (
-            ((minCount == undefined) || (minCount != undefined && parseInt(category.soldCount) >= minCount)) &&
-            ((maxCount == undefined) || (maxCount != undefined && parseInt(category.soldCount) <= maxCount)) &&
+            ((minCount == undefined) || (minCount != undefined && parseInt(category.cost) >= minCount)) &&
+            ((maxCount == undefined) || (maxCount != undefined && parseInt(category.cost) <= maxCount)) &&
                 ( (productDescription.indexOf(text)) !== -1 || (productName.indexOf(text)) !== -1) 
             ){
 
