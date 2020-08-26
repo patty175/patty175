@@ -88,19 +88,19 @@ document.addEventListener("DOMContentLoaded", function(e){
             sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
         }
     });
-
+    //ordeno ascendentemente por nombre la lista de productos
     document.getElementById("sortAsc").addEventListener("click", function(){
         sortAndShowCategories(ORDER_ASC_BY_NAME);
     });
-
+    //ordeno descendentemente por nombrela lista de productos
     document.getElementById("sortDesc").addEventListener("click", function(){
         sortAndShowCategories(ORDER_DESC_BY_NAME);
     });
-
+    // ordeno ascendentemente por cantidad de vendidos 
     document.getElementById("sortByCount").addEventListener("click", function(){
         sortAndShowCategories(ORDER_BY_PROD_COUNT);
     });
-
+ //se norran los datos que se hayan ingresado en "desde " y "hasta"
     document.getElementById("clearRangeFilter").addEventListener("click", function(){
         document.getElementById("rangeFilterCountMin").value = "";
         document.getElementById("rangeFilterCountMax").value = "";
@@ -112,8 +112,8 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
 
     document.getElementById("rangeFilterCount").addEventListener("click", function(){
-        //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
-        //de productos por categoría.
+        //Obtengo el mínimo y máximo de los intervalos para filtrar por precio
+        //la lista de productos
         minCount = document.getElementById("rangeFilterCountMin").value;
         maxCount = document.getElementById("rangeFilterCountMax").value;
 

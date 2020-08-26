@@ -40,8 +40,12 @@ var getJSONData = function(url){
     });
 }
 
-//Función que se ejecuta una vez que se haya lanzado el evento de
-//que el documento se encuentra cargado, es decir, se encuentran todos los
-//elementos HTML presentes.
-document.addEventListener("DOMContentLoaded", function(e){
-});
+//función que redirige al login
+function deleteItems() {
+  
+  alert("¡Vuelve pronto!");
+  window.location.assign("index.html");
+}
+
+    //sustituye la palabra "usuario" en la barra de menú por el nombre de usuario
+    document.getElementById("p1").innerHTML = "patty175@gmail.com"
