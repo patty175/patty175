@@ -50,6 +50,8 @@ function showProductsList(array){
             ((maxCount == undefined) || (maxCount != undefined && parseInt(category.soldCount) <= maxCount)) &&
                 ( (productDescription.indexOf(text)) !== -1 || (productName.indexOf(text)) !== -1) 
             ){
+        if (((minCount == undefined) || (minCount != undefined && parseInt(category.cost) >= minCount)) &&
+            ((maxCount == undefined) || (maxCount != undefined && parseInt(category.cost) <= maxCount))){
 
         htmlContentToAppend += '<div class="list-group-item list-group-item-action">\
         <div class="row"  onclick="showSpinner()">\
@@ -79,7 +81,8 @@ function showProductsList(array){
     
         productsList = sortByPrice(currentSortCriteria, productsList);
     
-        //Muestro los autos ordenados
+        
+        //Muestro los autos ordenadas
         showProductsList();
     }
 
@@ -154,3 +157,48 @@ function busqueda() {
 document.getElementById("myText").addEventListener("keyup", busqueda);
 busqueda();
 
+
+    document.getElementById("priceDesc").addEventListener("click", function(){
+        sortAndShowCars(ORDER_DESC_BY_PRICE);
+    });
+
+    document.getElementById("sortByCount").addEventListener("click", function(){
+        sortAndShowCars(ORDER_BY_PROD_COUNT);
+    });
+
+    document.getElementById("rangeFilterCount").addEventListener("click", function(){
+        //Obtengo el mínimo y máximo del valor de los productos
+        minCount = document.getElementById("rangeFilterCountMin").value;
+        maxCount = document.getElementById("rangeFilterCountMax").value;
+
+        console.log("hola")
+        if ((minCount != undefined) && (minCount != "") && (parseInt(minCount)) >= 0){
+            minCount = parseInt(minCount);
+        }
+        else{
+            minCount = undefined;
+        }
+
+        if ((maxCount != undefined) && (maxCount != "") && (parseInt(maxCount)) >= 0){
+            maxCount = parseInt(maxCount);
+        }
+        else{
+            maxCount = undefined;
+        }
+
+        showProductsList();
+    });
+
+    document.getElementById("clearRangeFilter").addEventListener("click", function(){
+      document.getElementById("rangeFilterCountMin").value = "";
+      document.getElementById("rangeFilterCountMax").value = "";
+
+    
+      minCount = undefined;
+      maxCount = undefined;
+
+        showProductsList();
+    
+    });
+
+});
