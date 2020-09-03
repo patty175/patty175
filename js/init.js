@@ -48,4 +48,4 @@ function deleteItems() {
 }
 
     //sustituye la palabra "usuario" en la barra de menú por el nombre de usuario
-    document.getElementById("p1").innerHTML = "patty175@gmail.com"
+    document.getElementById("p1").innerHTML = "patty175@gmail.com";
