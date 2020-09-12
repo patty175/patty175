@@ -10,9 +10,10 @@
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -31,17 +32,96 @@
     </li>
     </div>
   </nav>
-  <div class="container p-5">
-  
-    </div>
-  </div>
+  <main role="main">
+    <div class="container mt-5">
+      <div class="text-center p-4">
+        <h2>Descripción del producto</h2>
+        <p class="lead">Encontrarás aquí toda la información del producto seleccionado.</p>
+      
+      </div>
+      <h3 id="productName"></h3>
+      <hr class="my-2">
+      <dl>
+        <dt>Descripción</dt>
+        <dd>
+          <p id="productDescription"></p>
+        </dd>
+
+        <dt>Cantidad de productos en la categoría</dt>
+        <dd>
+          <p id="soldCount"></p>
+        </dd>
+
+        <dt>Precio final</dt>
+        <dd>
+          <p id="productPrice"></p>
+        </dd>
+
+        <dt>Imágenes ilustrativas</dt>
+        <dd>
+          <div class="row text-center text-lg-left pt-2" id="productImagesGallery">
+          </div>
+        </dd>
+
+        
+        <!--RELATED PRODUCTS-->
+        <dt>Productos relacionados</dt>
+        <dd>
+          <div class="row text-center text-lg-left pt-2" id="relatedProducts">
+          </div>
+        </dd>
+
+      </dl>
+
+      <!--COMMENTS LOADED FROM JSON-->
+      <div class="my-3">
+        <h2>Comentarios</h2>
+        <div id="commentsLoaded"></div>
+        
+
+      </div>
+
+      <!--BOX DE COMMENTS + PUNTUACION-->
+      <div id="commentsToAdd">
+
+        <form>
+          <div class="form-row">
+            
+          <div class="form-row">
+            <div class="for col-md-10">
+              <label for="FormControl">Añadir comentario</label>
+              <textarea class="form-control" id="commentBox" value="" placeholder="Añade tu comentario aquí" rows="4"></textarea>
+            </div>
+
+            <div class="form-group col-md-4">
+              <label for="inputRanking">Puntuación</label>
+              <select id="inputRanking" class="form-control">
+                <option selected>...</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+                          
+          <button type="submit" class="btn btn-primary" value="reply" id="comment-submit" value="" onclick="sendComment()">Enviar</button>
+          
+          </div>
+          </div>
+        </form>
+        </div>
+      
+        
+
+  </main>
   <footer class="text-muted">
     <div class="container">
       <p class="float-right">
         <a href="#">Volver arriba</a>
       </p>
       <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
-     
+      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
   </footer>
   <div id="spinner-wrapper">

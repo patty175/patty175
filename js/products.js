@@ -51,7 +51,7 @@ function showProductsList(array){
                 ( (productDescription.indexOf(text)) !== -1 || (productName.indexOf(text)) !== -1) 
             ){
 
-        htmlContentToAppend += '<div class="list-group-item list-group-item-action">\
+        htmlContentToAppend += '<a href="product-info.html" class="list-group-item list-group-item-action">\
         <div class="row"  onclick="showSpinner()">\
             <div class="col-3">\
                 <img src="' + category.imgSrc + '" alt="' + category.description + '" class="img-thumbnail">\
@@ -65,7 +65,8 @@ function showProductsList(array){
                 </div>\
             </div>\
         </div>\
-    </div>';
+    </div>\
+    </a>\;'
         }
     document.getElementById("products-list").innerHTML = htmlContentToAppend;
     }    
