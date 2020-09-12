@@ -121,32 +121,32 @@ function showStars(score, starsRate) {
     //Funcion que toma el comentario enviado, lo guarda en el localStorage
     //con una nueva variable e inserta el comentario en el area de comentarios
      
-  document.getElementById("comment-submit").addEventListener("click", function(){
+ // document.getElementById("comment-submit").addEventListener("click", function(){
 
-    var comentario = document.getElementById("commentBox").value;
-    var rating = document.getElementById("inputRanking").value;
+  //  var comentario = document.getElementById("commentBox").value;
+  //  var rating = document.getElementById("inputRanking").value;
 
-    var dateTime = new Date().toLocaleString();
+  //  var dateTime = new Date().toLocaleString();
 
-    var user = localStorage.getItem("p1")
+  //  var user = localStorage.getItem("p1")
 
-    var globalComment = localStorage.getItem("cadena");
+  //  var globalComment = localStorage.getItem("cadena");
 
     
-    var comentario = comentario + "|" + rating + "|" + user + "|" + dateTime;
+  //  var comentario = comentario + "|" + rating + "|" + user + "|" + dateTime;
 
-    if( GlobalComment ) GlobalComment += "*" + comentario;
+  //  if( GlobalComment ) GlobalComment += "*" + comentario;
 
-    localStorage.setItem("cadena", globalComment)
+  //  localStorage.setItem("cadena", globalComment)
 
     // para pintar esos valores, obtener la etiqueta html con la concatenacion de los valores
 
 
-});  
+//});  
     
 
 
-}
+
 
    
 
