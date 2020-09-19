@@ -1,21 +1,26 @@
 var product = {};
 
-function showImagesGallery(array){
+function showCarousel(array){
 
     let htmlContentToAppend = "";
+    var activar;
 
     for(let i = 0; i < array.length; i++){
         let imageSrc = array[i];
-
+            if(i==0){
+                activar = "active";
+            }
+            else {
+                activar = "";
+            }
         htmlContentToAppend += `
-        <div class="col-lg-3 col-md-4 col-6">
-            <div class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="` + imageSrc + `" alt="">
+                      
+          <div class="carousel-item ` + activar +`">
+             <img src="` + imageSrc + `" class="d-block w-100 alt"">
             </div>
-        </div>
-        `
+         `;
 
-        document.getElementById("productImagesGallery").innerHTML = htmlContentToAppend;
+        document.getElementById("dinamicCarousel").innerHTML = htmlContentToAppend;
     }
 }
 
@@ -39,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function(e){
             productPriceHTML.innerHTML = product.currency + " " +  product.cost;
 
             //Muestro las imagenes en forma de galería
-            showImagesGallery(product.images);
+            showCarousel(product.images);
         }
     });
 
@@ -96,6 +101,8 @@ document.addEventListener("DOMContentLoaded", function(e){
                          <h5 class="equal">` + commentsArray[i].description + `</h5> 
                          <small>` + commentsArray[i].dateTime +`</small>
                          </div>`;
+
+                         
                        
              document.getElementById("commentsLoaded").innerHTML = htmlContentToAppend;
         }
@@ -118,32 +125,10 @@ function showStars(score, starsRate) {
     }
 
 
-    //Funcion que toma el comentario enviado, lo guarda en el localStorage
-    //con una nueva variable e inserta el comentario en el area de comentarios
-     
- // document.getElementById("comment-submit").addEventListener("click", function(){
-
-  //  var comentario = document.getElementById("commentBox").value;
-  //  var rating = document.getElementById("inputRanking").value;
-
-  //  var dateTime = new Date().toLocaleString();
-
-  //  var user = localStorage.getItem("p1")
-
-  //  var globalComment = localStorage.getItem("cadena");
-
-    
-  //  var comentario = comentario + "|" + rating + "|" + user + "|" + dateTime;
-
-  //  if( GlobalComment ) GlobalComment += "*" + comentario;
-
-  //  localStorage.setItem("cadena", globalComment)
-
-    // para pintar esos valores, obtener la etiqueta html con la concatenacion de los valores
-
-
-//});  
-    
+   // function slidePics
+  //  let actualPosition = 0
+  //  let 
+   
 
 
 
