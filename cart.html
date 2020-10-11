@@ -40,8 +40,7 @@
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-      <li class="py-2 d-none d-md-inline-block" class="dropdown">
+         <li class="py-2 d-none d-md-inline-block" class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span id="p1" class="nav-label">Usuario</span> <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li style="padding: 0px 20px 0px 30px"><a href="#" id="Profile" onclick="showMyProfile()">Mi perfil</a></li>
@@ -52,12 +51,277 @@
     </div>
   </nav>
   <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 11/10/2020) y Entrega 6 (Fecha de entrega: 25/10/2020).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+   <!--Section: Block Content-->
+<section>
+
+  <!--Grid row-->
+  <div class="row">
+
+    <!--Grid column-->
+    <div class="col-lg-8">
+
+      <!-- Card -->
+      <div class="mb-3">
+        <div class="pt-4 wish-list">
+
+          <h5 class="mb-4"><strong>Mi carrito de compras</strong></h5>
+
+          <div class="row mb-4">
+            
+              <table class="table" style="width: 90%"> 
+                <thead> 
+                  <tr> 
+                    <th scope="col"></th> 
+                    <th scope="col">Nombre</th> 
+                    <th scope="col">Costo</th> 
+                    <th scope="col">Cantidad</th> 
+                    <th scope="col">Subtotal</th> 
+                  </tr> 
+                </thead>
+                <tbody id="cartItem"></tbody> 
+               
+              </table>
+                
+               
+            <div class="col-md-5 col-lg-3 col-xl-3">
+              <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
+               
+                <a href="#!">
+                  
+                </a>
+              </div>
+            </div>
+            <div class="col-md-7 col-lg-9 col-xl-9">
+              <div>
+                <div class="d-flex justify-content-between">
+                  
+                  
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <a href="#!" type="button" id="deleteProd" onclick="deleteProduct()" class="card-link-secondary small text-uppercase mr-3"><i
+                        class="fas fa-trash-alt mr-1"></i> Eliminar artículo </a>
+                    <a href="#!" type="button" id="moveTofav" class="card-link-secondary small text-uppercase"><i
+                        class="fas fa-heart mr-1"></i> Mover a favoritos </a>
+                  </div>
+                  <p class="mb-0"><span><strong id="summary">...</strong></span></p class="mb-0">
+                </div>
+              </div>
+            </div>
+          </div>
+                    
+
+        </div>
+      </div>
+      <!-- Card -->
+
+      <!-- Card -->
+      <div class="mb-3">
+        <div class="pt-4">
+
+          <h5 class="mb-4">Dirección de envío:</h5>
+
+          <form class="needs-validation" id="sell-info">
+            <div class="row">
+              <div class="col-md-7 mb-3">
+                <label for="productName">Calle</label>
+                <input type="text" class="form-control" id="productName" placeholder="" value="" >
+                <div class="invalid-feedback">
+                  
+                </div>
+              </div>
+            </div>
+                     
+            <div class="row">
+              <div class="col-md-3 mb-3">
+                <label for="zip">Numero</label>
+                <input type="number" class="form-control" id="productCostInput" placeholder="" required="" value="0" min="0">
+
+              </div>
+              <div class="col-md-4 mb-3">
+                    <label for="productName">Localidad</label>
+                    <input type="text" class="form-control" id="productName" placeholder="" value="" >
+                    <div class="invalid-feedback">
+                </div>
+             </div>
+            
+                <div class="col-md-7 mb-3">
+                <label for="state">Departmento</label>
+                <select class="custom-select d-block w-100" id="productCategory">
+                  <option value=""></option>
+                  <option>Artigas</option>
+                  <option>Canelones</option>
+                  <option>Colonia</option>
+                  <option>Flores</option>
+                  <option>Florida</option>
+                  <option>Montevideo</option>
+                  <option>San José</option>
+                  <option>Maldonado</option>
+                  <option>Rocha</option>
+                  <option>Río Negro</option>
+                  <option>Lavalleja</option>
+                  <option>Soriano</option>
+                  <option>Durazno</option>
+                  <option>Paysandú</option>
+                  <option>Salto</option>
+                  <option>Tacuarembó</option>
+                  <option>Rivera</option>
+                  <option>Treinta y Tres</option>
+                  <option>Cerro Largo</option>
+                </select>
+               
+              </div>
+              
+              <div class="col-md-7 mb-3">
+                <label for="productName">Teléfono de contacto</label>
+                <input type="text" class="form-control" id="productName" placeholder="" value="" >
+                
+              </div>
+            </div>
+            
+            
+          </form>
+        </div>
+      </div>
+      <!-- Card -->
+
+      <!-- Card -->
+      <div class="mb-3">
+        <div class="pt-4">
+
+          <h5 class="mb-4">Trabajamos con</h5>
+
+          <img class="mr-2" width="45px"
+            src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
+            alt="Visa">
+          <img class="mr-2" width="45px"
+            src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg"
+            alt="American Express">
+          <img class="mr-2" width="45px"
+            src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg"
+            alt="Mastercard">
+          <img class="mr-2" width="45px"
+            src="https://mdbootstrap.com/wp-content/plugins/woocommerce/includes/gateways/paypal/assets/images/paypal.png"
+            alt="PayPal acceptance mark">
+        </div>
+      </div>
+      <!-- Card -->
+
     </div>
+    <!--Grid column-->
+
+    <!--Grid column-->
+    <div class="col-lg-4">
+
+      <!-- Card -->
+      <div class="mb-3">
+        <div class="pt-4">
+
+          <h5 class="mb-3">Costos</h5>
+
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+              Subtotal
+              <span id="subTotal">...</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+              Costo de envío
+              <span id="shippingInfo">...</span>
+            </li>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="premiumOption" value="option1" checked>
+              <label class="form-check-label" for="exampleRadios1">
+                Premium 2 a 5 días(15%)
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="expressOption" value="option2">
+              <label class="form-check-label" for="exampleRadios2">
+                Express 5 a 8 días(7%)
+              </label>
+            </div>
+            <div class="form-check disabled">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="standardOption" value="option3">
+              <label class="form-check-label" for="exampleRadios3">
+                Standard 12 a 15 días(5%)
+              </label>
+            </div>
+              <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                Forma de pago
+                <span>...</span>
+              </li>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="visaCard" value="option1" checked>
+                <label class="form-check-label" for="exampleRadios1">
+                  VISA
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="masterCard" value="option2">
+                <label class="form-check-label" for="exampleRadios2">
+                  MASTERCARD
+                </label>
+              </div>
+              <div class="form-check disabled">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="amexCard" value="option3">
+                <label class="form-check-label" for="exampleRadios3">
+                  AMEX
+                </label>
+            </div>
+            <div class="form-check disabled">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="paypal" value="option4">
+              <label class="form-check-label" for="exampleRadios4">
+                PAYPAL
+              </label>
+          </div>
+            
+            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+              <div>
+                <strong>Importe total</strong>
+                <strong>
+                  <p class="mb-0">(Incluye IVA)</p>
+                </strong>
+              </div>
+              <span id="totalAmount"><strong></strong></span>
+            </li>
+          </ul>
+
+          <button type="button" class="btn btn-primary btn-block">Realizar compra</button>
+
+        </div>
+      </div>
+      <!-- Card -->
+
+      <!-- Card -->
+      <div class="mb-3">
+        <div class="pt-4">
+
+          <a class="dark-grey-text d-flex justify-content-between" data-toggle="collapse" href="#collapseExample"
+            aria-expanded="false" aria-controls="collapseExample">
+            Agregar código de descuento (opcional)
+            <span><i class="fas fa-chevron-down pt-1"></i></span>
+          </a>
+
+          <div class="collapse" id="collapseExample">
+            <div class="mt-3">
+              <div class="md-form md-outline mb-0">
+                <input type="text" id="discount-code" class="form-control font-weight-light"
+                  placeholder="Ingresa el código de descuento">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Card -->
+
+    </div>
+    <!--Grid column-->
+
+  </div>
+  <!-- Grid row -->
+
+</section>
+<!--Section: Block Content-->
   </div>
   <div id="spinner-wrapper">
     <div class="lds-ring">

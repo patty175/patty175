@@ -125,11 +125,6 @@ function showStars(score, starsRate) {
     }
 
 
-   // function slidePics
-  //  let actualPosition = 0
-  //  let 
-   
-
 
 
 
