@@ -1,4 +1,5 @@
 
+let subtotal = 0;
 
 let shipping = 0;
 var shippingCost = 0;
@@ -11,25 +12,27 @@ function showCart(){
             let htmlContentToAppend = "";
             for(let i = 0; i < cartInfo.length; i++){
 
-         var subtotal = cartInfo[i].unitCost
+         var subtotal = cartInfo[i].unitCost * cartInfo[i].count
          document.getElementById("subTotal").innerHTML = subtotal + ` ` + cartInfo[i].currency ;
          document.getElementById("shippingInfo").innerHTML = shippingCost + ` ` + cartInfo[i].currency ;
          document.getElementById("totalAmount").innerHTML = (subtotal+shippingCost) + ` ` + cartInfo[i].currency ;
-                
-                       
+               
              
           htmlContentToAppend += `
           <tr>
           <td><img src=" ` + cartInfo[i].src + `" width="80px"</td>
           <td> ` + cartInfo[i].name + ` </td>
           <td> <span id="productCurrency"` + cartInfo[i].currency + `</span> <span id="productCost">` + cartInfo[i].unitCost + `</span></td>
-          <td><input id="productCount" class="form-control" style="width:60px" value= ` + cartInfo[i].count + `></td>
-          <td><input id="productSubtotal" class="form-control" style="width:60px" value="`+ (cartInfo[i].count  * cartInfo[i].unitCost)+  `">` + cartInfo[i].currency + `</td>
+          <td><input id="productCount" class="form-control" style="width:60px" min="1" value= ` + cartInfo[i].count + `></td>
+          <td><input id="productSubtotal" class="form-control" style="width:60px" value="`+ subtotal +  `">` + cartInfo[i].currency + `</td>
           </tr>
           `      
                     
             document.getElementById("cartItem").innerHTML = htmlContentToAppend;
-            
+
+            updateTotal();
+            updateShipping();
+
             document.getElementById("productCount").addEventListener("change", function(){
               let quantity = document.getElementById("productCount").value;
               subtotal = quantity * cartInfo[i].unitCost;
@@ -41,7 +44,6 @@ function showCart(){
            
         });
     
-       
           document.getElementById("premiumOption").addEventListener("change", function(){
             shipping = 0.15;
             updateTotal();
@@ -58,7 +60,6 @@ function showCart(){
             updateShipping()
           });
 
-
 function updateTotal(){ 
 
   document.getElementById("totalAmount").innerHTML = subtotal + shippingCost + ` ` + cartInfo[i].currency;
@@ -68,8 +69,7 @@ function updateTotal(){
 function updateShipping() {
   shippingCost = subtotal * shipping;
   document.getElementById("shippingInfo").innerHTML = parseInt(shippingCost) + ` ` + cartInfo[i].currency;
-}
-
+    }
   }
 }
 
@@ -81,6 +81,7 @@ function updateShipping() {
             cartInfo = cartArticles.articles;
                 
                 showCart();
+              
 
       };
     });
