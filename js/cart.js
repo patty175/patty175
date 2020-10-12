@@ -1,86 +1,87 @@
-let total = 0;
-let subtotal = 0;
-let productCcy = "";
-let shipping = 0.15;
 
 
+let shipping = 0;
+var shippingCost = 0;
 
 
 //Funcion que toma la informacion del Json y la muestra en form de lista 
-getJSONData(CART_INFO_URL).then(function(resultObj){
-        if (resultObj.status === "ok")
-        {
-            cartArticles = resultObj.data;
-            cartInfo = cartArticles.articles;
+
+function showCart(){
 
             let htmlContentToAppend = "";
             for(let i = 0; i < cartInfo.length; i++){
-         
+
+         var subtotal = cartInfo[i].unitCost
+         document.getElementById("subTotal").innerHTML = subtotal + ` ` + cartInfo[i].currency ;
+         document.getElementById("shippingInfo").innerHTML = shippingCost + ` ` + cartInfo[i].currency ;
+         document.getElementById("totalAmount").innerHTML = (subtotal+shippingCost) + ` ` + cartInfo[i].currency ;
+                
+                       
              
           htmlContentToAppend += `
           <tr>
           <td><img src=" ` + cartInfo[i].src + `" width="80px"</td>
           <td> ` + cartInfo[i].name + ` </td>
-          <td> ` + cartInfo[i].currency + ` <span id="productCost" value= ` + cartInfo[i].unitCost + `></span></td>
+          <td> <span id="productCurrency"` + cartInfo[i].currency + `</span> <span id="productCost">` + cartInfo[i].unitCost + `</span></td>
           <td><input id="productCount" class="form-control" style="width:60px" value= ` + cartInfo[i].count + `></td>
-          <td><input id="productSubtotal" class="form-control" style="width:60px" >` + cartInfo[i].currency + `</td>
+          <td><input id="productSubtotal" class="form-control" style="width:60px" value="`+ (cartInfo[i].count  * cartInfo[i].unitCost)+  `">` + cartInfo[i].currency + `</td>
           </tr>
           `      
-                   
+                    
             document.getElementById("cartItem").innerHTML = htmlContentToAppend;
+            
+            document.getElementById("productCount").addEventListener("change", function(){
+              let quantity = document.getElementById("productCount").value;
+              subtotal = quantity * cartInfo[i].unitCost;
+              document.getElementById("productSubtotal").innerHTML = subtotal + ` ` + cartInfo[i].currency;
+              document.getElementById("subTotal").innerHTML = subtotal + ` ` + cartInfo[i].currency;
+              
+              updateTotal();
+              updateShipping();
+           
+        });
     
-        };
-    };
-});
+       
+          document.getElementById("premiumOption").addEventListener("change", function(){
+            shipping = 0.15;
+            updateTotal();
+            updateShipping()
+          });
+          document.getElementById("expressOption").addEventListener("change", function(){
+            shipping = 0.07;
+            updateTotal();
+            updateShipping()
+          });
+          document.getElementById("standardOption").addEventListener("change", function(){
+            shipping = 0.05;
+            updateTotal();
+            updateShipping()
+          });
 
 
-function updateTotal(){
+function updateTotal(){ 
 
- 
-
-  let subTotalHTML = document.getElementById("subTotal");
-  let totalHTML = document.getElementById("totalAmount");
-  let shippingHTML = document.getElementById("shippingInfo");
-
-  let shippingCost = Math.round(shipping * subtotal);
-
-  subTotalHTML.innerHTML = productCcy + " " + subtotal;
-  totalHTML.innerHTML = productCcy + " " + (subtotal + shippingCost);
-  shippingHTML.innerHTML = productCcy + " " + shippingCost
-
-  alert("working")
-  }
-   
-
-function updateSubtotal(){ 
-
-  let count = parseInt(document.getElementById("productCount").value);
-  let productunitCost = parseInt(document.getElementById("productCost").value);
-  subtotal = count * productunitCost
-  document.getElementById("subTotal").innerHTML = productCcy + " " + subtotal;
- 
-  updateTotal();
+  document.getElementById("totalAmount").innerHTML = subtotal + shippingCost + ` ` + cartInfo[i].currency;
  
 }
 
+function updateShipping() {
+  shippingCost = subtotal * shipping;
+  document.getElementById("shippingInfo").innerHTML = parseInt(shippingCost) + ` ` + cartInfo[i].currency;
+}
 
-//Funcion que aplica el cargo de envio dependiendo de que opcion se elija
-document.addEventListener("DOMContentLoaded", function(e){
+  }
+}
 
-  document.getElementById("premiumOption").addEventListener("change", function(){
-    shipping = 0.15;
-    updateTotal();
+  document.addEventListener("DOMContentLoaded", function(e){
+   getJSONData(CART_INFO_URL).then(function(resultObj){
+    if (resultObj.status == "ok")
+      {   
+        cartArticles = resultObj.data;
+            cartInfo = cartArticles.articles;
+                
+                showCart();
+
+      };
+    });
   });
-  document.getElementById("expressOption").addEventListener("change", function(){
-    shipping = 0.07;
-    updateTotal();
-  });
-  document.getElementById("standardOption").addEventListener("change", function(){
-    shipping = 0.05;
-    updateTotal();
-  });
-  
-
-
-});
-
