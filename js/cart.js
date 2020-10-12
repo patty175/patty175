@@ -54,10 +54,12 @@ function updateTotal(){
 		// Agregamos al subtotal siempre el valor en pesos
 		newsubtotal += calculateInPesos(currency, price);          
 	});
+	subtotal = newsubtotal;
+	shippingCost = subtotal * shipping;
 
 	document.getElementById("subTotal").innerHTML = newsubtotal + ` UYU`;   
 	document.getElementById("totalAmount").innerHTML = newsubtotal + shippingCost + ` UYU`;   
-	subtotal = newsubtotal;
+	
 }
 
 function calculateInPesos(currency, cost){
