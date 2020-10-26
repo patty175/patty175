@@ -91,63 +91,41 @@
                 </a>
               </div>
             </div>
-            <div class="col-md-7 col-lg-9 col-xl-9">
-              <div>
-                <div class="d-flex justify-content-between">
-                  
-                  
-                </div>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <a href="#!" type="button" id="deleteProd" onclick="deleteProduct()" class="card-link-secondary small text-uppercase mr-3"><i
-                        class="fas fa-trash-alt mr-1"></i> Eliminar artículo </a>
-                    <a href="#!" type="button" id="moveTofav" class="card-link-secondary small text-uppercase"><i
-                        class="fas fa-heart mr-1"></i> Mover a favoritos </a>
-                  </div>
-                  <p class="mb-0"><span><strong id="summary">...</strong></span></p class="mb-0">
-                </div>
-              </div>
-            </div>
+            
           </div>
-                    
-
+               
         </div>
       </div>
-      <!-- Card -->
-
-      <!-- Card -->
+    
       <div class="mb-3">
         <div class="pt-4">
 
           <h5 class="mb-4">Dirección de envío:</h5>
 
-          <form class="needs-validation" id="sell-info">
+          <form class="needs-validation" novalidate>
             <div class="row">
               <div class="col-md-7 mb-3">
-                <label for="productName">Calle</label>
-                <input type="text" class="form-control" id="productName" placeholder="" value="" >
-                <div class="invalid-feedback">
-                  
-                </div>
+                <label for="productAddress">Calle</label>
+                <input type="text" class="form-control" id="productAddress" placeholder="" value="" oninput="validation('productAddress')" required>
+                
               </div>
             </div>
                      
             <div class="row">
               <div class="col-md-3 mb-3">
                 <label for="zip">Numero</label>
-                <input type="number" class="form-control" id="productCostInput" placeholder="" required="" value="0" min="0">
+                <input type="number" class="form-control" id="productNumber" oninput="validation('productNumber')" placeholder="" value="" min="0" required>
 
               </div>
               <div class="col-md-4 mb-3">
-                    <label for="productName">Localidad</label>
-                    <input type="text" class="form-control" id="productName" placeholder="" value="" >
-                    <div class="invalid-feedback">
-                </div>
+                    <label for="productState">Localidad</label>
+                    <input type="text" class="form-control" id="productState" oninput="validation('productState')" placeholder="" value="" required>
+                   
              </div>
             
                 <div class="col-md-7 mb-3">
                 <label for="state">Departmento</label>
-                <select class="custom-select d-block w-100" id="productCategory">
+                <select class="custom-select d-block w-100" id="productState1" oninput="validation('productState1')" required>
                   <option value=""></option>
                   <option>Artigas</option>
                   <option>Canelones</option>
@@ -174,7 +152,7 @@
               
               <div class="col-md-7 mb-3">
                 <label for="productName">Teléfono de contacto</label>
-                <input type="text" class="form-control" id="productName" placeholder="" value="" >
+                <input type="number" class="form-control" id="productTel" oninput="validation('productTel')" placeholder="" value="" required>
                 
               </div>
             </div>
@@ -228,70 +206,125 @@
               Costo de envío
               <span id="shippingInfo">...</span>
             </li>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="shipping" id="premiumOption" value="option1" checked >
-              <label class="form-check-label" for="exampleRadios1">
-                Premium 2 a 5 días(15%)
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="shipping" id="expressOption" value="option2">
-              <label class="form-check-label" for="exampleRadios2">
-                Express 5 a 8 días(7%)
-              </label>
-            </div>
-            <div class="form-check disabled">
-              <input class="form-check-input" type="radio" name="shipping" id="standardOption" value="option3">
-              <label class="form-check-label" for="exampleRadios3">
-                Standard 12 a 15 días(5%)
-              </label>
-            </div>
-              <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                Forma de pago
-                <span>...</span>
-              </li>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="visaCard" value="option1" checked>
-                <label class="form-check-label" for="exampleRadios1">
-                  VISA
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="masterCard" value="option2">
-                <label class="form-check-label" for="exampleRadios2">
-                  MASTERCARD
-                </label>
-              </div>
-              <div class="form-check disabled">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="amexCard" value="option3">
-                <label class="form-check-label" for="exampleRadios3">
-                  AMEX
-                </label>
-            </div>
-            <div class="form-check disabled">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="paypal" value="option4">
-              <label class="form-check-label" for="exampleRadios4">
-                PAYPAL
-              </label>
-          </div>
+           
+            <form class="was-validated">
+            <div class="d-block my-3">
+              <h5 class="mb-3">Selecciona un tipo de envío</h4>
+                <div class="custom-control custom-radio mb-1">
+                  <input type="radio" class="custom-control-input" id="premiumOption" name="radio-stacked" required checked>
+                  <label class="custom-control-label" for="premiumOption"> Envío Premium - 2 a 5 días(15%)</label>
+                </div>
+                <div class="custom-control custom-radio mb-1">
+                  <input type="radio" class="custom-control-input" id="expressOption" name="radio-stacked" required>
+                  <label class="custom-control-label" for="expressOption">Envío Express - 5 a 8 días(7%)</label>
+                </div>
+                <div class="custom-control custom-radio mb-1">
+                  <input type="radio" class="custom-control-input" id="standardOption" name="radio-stacked" required>
+                  <label class="custom-control-label" for="standardOption">Envío Standard - 12 a 15 días(5%)</label>
+                </div>
             
-            <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
-              <div>
+            </div>
+            
+                        
+         <!-- Button trigger modal -->
+         <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#staticBackdrop">
+          Seleccionar método de pago
+          </button>
+         </form>
+       <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+             <div class="modal-header">      
+    
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+         </div>
+
+         <!--Payment method PopUp-->
+         <form class="needs-validation" novalidate>
+           <div class="modal-body">
+        
+
+        <h4 class="mb-3">Detalles del pago</h4>
+
+        <div class="d-block my-3">
+          <div class="custom-control custom-radio">
+            <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required pattern([0-9])>
+            <label class="custom-control-label" for="credit">Tarjeta de crédito</label>
+          </div>
+          <div class="custom-control custom-radio">
+            <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
+            <label class="custom-control-label" for="debit">Tarjeta de débito</label>
+          </div>
+          <div class="custom-control custom-radio">
+            <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
+            <label class="custom-control-label" for="paypal">PayPal</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="cc-name">Titular de la tarjeta</label>
+            <input type="text" class="form-control" id="cc-name" value="" placeholder="" oninput="validation('cc-name')" required>
+            <small class="text-muted">Nombre completo que aparece en la tarjeta</small>
+            <div class="invalid-feedback">
+              El nombre del titular es requerido
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="cc-number">Número de la tarjeta</label>
+            <input type="number" class="form-control" id="cc-number" value="" oninput="validation('cc-number')" placeholder="" required>
+            <div class="invalid-feedback">
+              El número de la tarjeta es requerido
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 mb-3">
+            <label for="cc-expiration">Fecha de vencimiento</label>
+            <input type="date" class="form-control" id="cc-expiration" value="" oninput="validation('cc-expiration')" placeholder="" required>
+            <div class="invalid-feedback">
+              La fecha de vencimiento es requerida
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="cc-cvv">CVV(Código de seguridad)</label>
+            <input type="number" class="form-control" id="cc-cvv" value=""  oninput="validation('cc-cvv')" placeholder="" required>
+            <div class="invalid-feedback">
+              El código de seguridad es requerido
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Hecho</button>
+        </div>
+        </form>
+        </div>
+           </div>
+
+             </div>
+     
+               </div>
+               </div>
+                </div>
+               </li>
+              
+              <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+               <div>
                 <strong>Importe total</strong>
                 <strong>
-                  <p class="mb-0">(Incluye IVA)</p>
-                </strong>
-              </div>
-              <span id="totalAmount"><strong></strong></span>
-            </li>
-          </ul>
-
-          <button type="button" class="btn btn-primary btn-block">Realizar compra</button>
-
-        </div>
-      </div>
-      <!-- Card -->
-
+                <p class="mb-0">(Incluye IVA)</p>
+                 </strong>
+                     </div>
+                     <span id="totalAmount"><strong></strong></span>
+               </li>
+         </ul>
+        <button type="submit" class="btn btn-primary btn-lg btn-block" id="myForm" onclick="sent()">Realizar compra</button>
+        <div id="buy"></div>
+           
+    
       <!-- Card -->
       <div class="mb-3">
         <div class="pt-4">
@@ -312,6 +345,8 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
       <!-- Card -->
 
     </div>
