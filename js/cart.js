@@ -12,14 +12,14 @@ function showCart(){
 	
     for(let i = 0; i < cartInfo.length; i++) {
 		   
-        htmlContentToAppend += `<tr id="fila">
+        htmlContentToAppend += `<tr id="fila-`+i+`">
 		<td><img src=" ` + cartInfo[i].src + `" width="80px"</td>
 		<td> ` + cartInfo[i].name + ` </td>
 		<td> <span id="productCurrency"` + cartInfo[i].currency + `</span> <span id="productCost">` + cartInfo[i].unitCost + `</span></td>
 		<td><input id="productCount" type="number" data-cost="` + cartInfo[i].unitCost + `" data-index="`+i+`" class="productCount form-control" style="width:60px" min="1" value= ` + cartInfo[i].count + `> </td>
 		<td>`+ cartInfo[i].currency+ `<input data-currency="`+ cartInfo[i].currency+ `"  id="productSubtotal-`+i+`" class="form-control  price" disabled style="width:90px" value="`+ cartInfo[i].count * cartInfo[i].unitCost +  `"></td>
-		<a href="#!" type="button" data-id="`+i+`" class="boton-eliminar card-link-secondary small text-uppercase mr-3"><i
-        class="fas fa-trash-alt mr-1"></i> Eliminar artículo </a>
+		<td><a href="#" type="button" data-id="`+i+`"  class="boton-eliminar card-link-secondary small text-uppercase mr-3"><i
+        class="fas fa-trash-alt mr-1"></i> Eliminar artículo </a></td>
 		</tr>`;  
 		
 		// Insertamos TR
@@ -45,6 +45,25 @@ function showCart(){
 		});
 		
 	});
+
+	// A cada boton eliminar que generamos le agregamos el evento click
+	document.querySelectorAll('.boton-eliminar').forEach(item => {
+		item.addEventListener('click', event => {
+			
+			// en el data id viene el Index
+			let id = event.target.getAttribute('data-id');
+			// cada tr es la concatenacion de fila e index, fila-0, fila-1...
+			let trElement = document.getElementById('fila-'+id);
+			// Sabemos que elemento queremos remover
+			trElement.remove();
+			
+			//Actualizamos totales
+			updateTotal();
+			updateShipping();
+
+		});
+	});
+
 }
 
 // Todos los precios van en UYU
@@ -109,12 +128,6 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
   });
 
-  //funcion que remueve la fila seleccionada al hacer click en el boton "Eliminar"
-  	document.getElementById('data-id').addEventListener('click', function() {
-		document.getElementById('data-id').remove()
-		updateTotal();
-		updateShipping()
-	  });
 
   //funcion que chequea que el elemento sea valido
   function validation (id) 
