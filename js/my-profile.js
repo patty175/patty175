@@ -55,7 +55,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
              event.preventDefault();
              event.stopPropagation();
            }
+           
            form.classList.add('was-validated');
+           alert("Se han guardado tus cambios!");
          }, false);
        });
      }, false);
