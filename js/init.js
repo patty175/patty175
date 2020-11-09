@@ -40,15 +40,23 @@ var getJSONData = function(url){
     });
 }
 
-//función que redirige al login
+//función que borra el localstorage del registro y redirige al login
 function deleteItems() {
-  
+  localStorage.clear();
   alert("¡Vuelve pronto!");
   window.location.assign("index.html");
 }
 
-    //sustituye la palabra "usuario" en la barra de menú por el nombre de usuario
-    document.getElementById("p1").innerHTML = "patty175@gmail.com";
+//Función que se ejecuta una vez que se haya lanzado el evento de
+//que el documento se encuentra cargado, es decir, se encuentran todos los
+//elementos HTML presentes.
+document.addEventListener("DOMContentLoaded", function(e){
+      
+      //sustituye la palabra "usuario" en la barra de menú por el nombre de usuario
+      document.getElementById("p1").innerHTML = localStorage.getItem('email');
+
+    });
+
 
   function showCart(){
 

@@ -51,23 +51,20 @@ function showProductsList(array){
                 ( (productDescription.indexOf(text)) !== -1 || (productName.indexOf(text)) !== -1) 
             ){
 
-        htmlContentToAppend += '<a href="product-info.html" class="list-group-item list-group-item-action">\
-        <div class="row"  onclick="showSpinner()">\
-            <div class="col-3">\
-                <img src="' + category.imgSrc + '" alt="' + category.description + '" class="img-thumbnail">\
-            </div>\
-            <div class="col">\
-                <div class="d-flex w-100 justify-content-between">\
-                    <h4 class="mb-1">'+ category.name + ' ' + '-' + ' ' + category.cost + ' ' + category.currency + '</h4>\
-                 <small class="text-muted">' + category.soldCount + ' artículos vendidos</small>\
-                </div>\
-                <p class="mb-1">' + category.description + '</p>\
-                </div>\
-            </div>\
-        </div>\
-    </div>\
-    </a>\;'
-        }
+        htmlContentToAppend += `
+        <div class="col" onclick="showSpinner()">
+            <a href="product-info.html" class="list-group-item list-group-item-action">
+                <img src=" ` + category.imgSrc + `" alt="` + category.description + `" class="img-thumbnail">
+                <h4 class="mb-1">`+ category.name + ` ` + `-` + ` ` + category.cost + ` ` + category.currency + `</h4>
+                <small class="text-muted">` + category.soldCount + ` artículos vendidos</small>
+                <p class="mb-1">` + category.description + `</p>
+            </a>
+        </div>`;
+            
+        
+
+            };
+
     document.getElementById("products-list").innerHTML = htmlContentToAppend;
     }    
     }

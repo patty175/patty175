@@ -46,9 +46,9 @@
       <img class="mb-4" src="img/login.png" alt="" width="100%" >
       <h1 class="h3 mb-3 font-weight-normal">Inicar sesión</h1>
       <label for="inputEmail" class="sr-only">Email</label>
-      <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Ingrese su email" required autofocus>
+      <input type="email" name="inputEmail" id="inputEmail" oninput="validation('inputEmail')" class="form-control" placeholder="Ingrese su email" required autofocus>
       <label for="inputPassword" class="sr-only">Contraseña</label>
-      <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Ingrese su contraseña" required>
+      <input type="password" name="inputPassword" id="inputPassword" oninput="validation('inputPassword')" class="form-control" placeholder="Ingrese su contraseña" required>
       
       <button class="btn btn-lg btn-primary btn-block" id="ejecutor">Ingresar</button>
       <p class="mt-5 mb-3 text-muted">&copy; 2020</p>
@@ -58,6 +58,7 @@
 
   <script src="js/init.js"></script>   
   <script src="js/login.js"></script>
+  <script src="js/cart.js"></script>
 
     
  
